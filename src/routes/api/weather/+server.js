@@ -1,7 +1,8 @@
+import {API_KEY} from '$env/static/private'
 const FETCH_OPTIONS = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '16bebd1e8bmsh29a76c8761788f2p19539fjsn40b7344fac15',
+		'X-RapidAPI-Key': API_KEY,
 		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
 	}
 };
