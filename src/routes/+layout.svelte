@@ -1,8 +1,12 @@
+<script>
+	import '../app.css';
+</script>
+
 <div>
 	<slot />
 </div>
 
-<style>
+<style lang="postcss">
 	:global(body) {
 		background: #fdfdfd;
 		display: grid;

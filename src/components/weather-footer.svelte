@@ -1,21 +1,27 @@
+<script>
+	export let humidity = 'No data available';
+	export let windSpeed = 'No data available';
+	export let feelsLike = 'No data available';
+</script>
+
 <footer>
 	<div>
-		<span> 33% </span>
+		<span> {humidity} </span>
 		<strong> Humidity </strong>
 	</div>
 
 	<div>
-		<span> 12 km/h </span>
-		<strong> windspeed </strong>
+		<span> {windSpeed} km/h </span>
+		<strong> Wind speed </strong>
 	</div>
 
 	<div>
-		<span> 12° </span>
+		<span> {feelsLike}° </span>
 		<strong> Feels like </strong>
 	</div>
 </footer>
 
-<style>
+<style lang="postcss">
 	footer {
 		border: 2px solid #000;
 		padding: 12px 32px;

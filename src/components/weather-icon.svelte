@@ -2,11 +2,13 @@
 	export let icon = '';
 </script>
 
-<img src={icon} alt="weather icon" />
+<img class="w-20 h-auto mt-6" src={icon} alt="weather icon" />
 
-<style>
+<!--
+<style lang="postcss">
 	img {
 		widht: 100px;
 		height: auto;
 	}
 </style>
+-->
