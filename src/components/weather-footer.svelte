@@ -6,17 +6,17 @@
 
 <footer>
 	<div>
-		<span> {humidity} </span>
+		<span id="humidity"> {humidity} </span>
 		<strong> Humidity </strong>
 	</div>
 
 	<div>
-		<span> {windSpeed} km/h </span>
+		<span id="wind_speed"> {windSpeed} km/h </span>
 		<strong> Wind speed </strong>
 	</div>
 
 	<div>
-		<span> {feelsLike}° </span>
+		<span id="feels_like"> {feelsLike}° </span>
 		<strong> Feels like </strong>
 	</div>
 </footer>
