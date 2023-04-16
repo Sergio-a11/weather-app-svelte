@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<div>
+<div class="bg-gradient-to-r from-indigo-300 to-blue-200">
 	<slot />
 </div>
 

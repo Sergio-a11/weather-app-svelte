@@ -8,7 +8,7 @@
 	id="txtSearch"
 	{value}
 	placeholder="Bogota"
-	class="flex-1 w-7/12 pt-1 pb-1 pl-3 text-lg font-normal text-gray-900 placeholder-gray-400 uppercase border border-indigo-500 shadow-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-700 focus:border-transparent"
+	class="flex-1 w-7/12 pt-1 pb-1 pl-3 text-lg font-normal text-indigo-700 placeholder-indigo-400 uppercase bg-transparent border-2 border-indigo-500 shadow-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:border-transparent"
 />
 
 <style>
