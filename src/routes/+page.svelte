@@ -6,6 +6,10 @@
 	import WeatherIcon from '../components/weather-icon.svelte';
 	import WeatherSearchInput from '../components/weather-search-input.svelte';
 	import WeatherSearchButton from '../components/weather-search-button.svelte';
+	import WeatherInfo from '../components/weather-info.svelte';
+
+	let new_request = false;
+	let requestData;
 
 	let weatherPromise = getWeatherFrom();
 	// @ts-ignore
@@ -13,46 +17,48 @@
 	 * @param {{ detail: { text: any; }; }} event
 	 */
 	function handleMessage(event) {
-		//alert('llego');
 		let weatherPromise = getWeatherFrom(event.detail.text ?? 'Bogota');
 		weatherPromise.then((data) => {
+			requestData = data;
+			new_request = true;
 			console.log(data);
-			// @ts-ignore
-			document.getElementById('temp').innerHTML = data.temperature + '°';
-			document.getElementById('condition_text').innerHTML = data.conditionText;
-			document.getElementById('icon').src = data.conditionIcon;
-			document.getElementById('humidity').innerHTML = data.humidity;
-			document.getElementById('wind_speed').innerHTML = data.windSpeed;
-			document.getElementById('feels_like').innerHTML = data.feelsLike;
 		});
 	}
-
-	//handleMessage();
 </script>
 
 {#await weatherPromise then weatherValue}
 	<section class="p-5">
 		<WeatherSearchInput />
 		<WeatherSearchButton on:request={handleMessage} />
-		<!--<h1 class="pt-8 text-3xl font-normal text-gray-900 uppercase">
-			{weatherValue.locationName || 'No weather'}
-		</h1>-->
-		<h2 class="mt-5 font-normal text-black uppercase text-9xl" id="temp">
-			{weatherValue.temperature || 'No Temp'}°
-		</h2>
-		<h3
-			class="absolute font-normal -rotate-90 top-24 right-3"
-			id="condition_text"
-		>
-			{weatherValue.conditionText || 'No Text'}
-		</h3>
-		<WeatherIcon icon={weatherValue.conditionIcon || 'No Icon'} />
+		{#if new_request === true}
+			<WeatherInfo
+				location={requestData.locationName}
+				temperature={requestData.temperature}
+				conditionText={requestData.conditionText}
+			/>
+			<WeatherIcon icon={requestData.conditionIcon || 'No Icon'} />
+		{:else}
+			<WeatherInfo
+				location={weatherValue.locationName}
+				temperature={weatherValue.temperature}
+				conditionText={weatherValue.conditionText}
+			/>
+			<WeatherIcon icon={weatherValue.conditionIcon || 'No Icon'} />
+		{/if}
 	</section>
-	<WeatherFooter
-		humidity={weatherValue.humidity}
-		windSpeed={weatherValue.windSpeed}
-		feelsLike={weatherValue.feelsLike}
-	/>
+	{#if new_request === true}
+		<WeatherFooter
+			humidity={requestData.humidity}
+			windSpeed={requestData.windSpeed}
+			feelsLike={requestData.feelsLike}
+		/>
+	{:else}
+		<WeatherFooter
+			humidity={weatherValue.humidity}
+			windSpeed={weatherValue.windSpeed}
+			feelsLike={weatherValue.feelsLike}
+		/>
+	{/if}
 {/await}
 
 <style lang="postcss">

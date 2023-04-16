@@ -21,6 +21,6 @@
 
 <button
 	on:click={handleClick}
-	class="px-2 py-2 ml-3 text-indigo-500 border border-indigo-500 rounded-full"
+	class="absolute px-1 py-1 ml-3 text-indigo-500 border border-indigo-500 rounded-full top-6"
 	><img width="24px" height="24px" src={search} alt="search" />
 </button>
