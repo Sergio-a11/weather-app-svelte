@@ -13,7 +13,7 @@ export async function GET(event) {
   const response = await fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${query}`, FETCH_OPTIONS)
 
   const data = await response.json()
-  //console.log(data);
+  console.log(data);
   const { location, current } = data;
   const { country, localtime, name } = location;
   const {
@@ -25,11 +25,12 @@ export async function GET(event) {
     wind_kph,
     wind_dir
   } = current;
-  const { icon, text } = condition;
+  const { icon, text, code } = condition;
 
   const body = {
     conditionIcon: icon,
     conditionText: text,
+    conditionCode: code,
     country,
     localtime,
     locationName: name,

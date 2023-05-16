@@ -7,6 +7,7 @@
 	import WeatherSearchInput from '../components/weather-search-input.svelte';
 	import WeatherSearchButton from '../components/weather-search-button.svelte';
 	import WeatherInfo from '../components/weather-info.svelte';
+	import WeatherImage from '../components/weather-image.svelte';
 
 	let new_request = false;
 	let requestData;
@@ -33,17 +34,27 @@
 		{#if new_request === true}
 			<WeatherInfo
 				location={requestData.locationName}
+				country={requestData.country}
 				temperature={requestData.temperature}
 				conditionText={requestData.conditionText}
 			/>
-			<WeatherIcon icon={requestData.conditionIcon || 'No Icon'} />
+			<!-- <WeatherIcon icon={requestData.conditionIcon || 'No Icon'} /> -->
+			<WeatherImage
+				code={requestData.conditionCode}
+				isDay={requestData.isDay}
+			/>
 		{:else}
 			<WeatherInfo
 				location={weatherValue.locationName}
+				country={weatherValue.country}
 				temperature={weatherValue.temperature}
 				conditionText={weatherValue.conditionText}
 			/>
-			<WeatherIcon icon={weatherValue.conditionIcon || 'No Icon'} />
+			<!--<WeatherIcon icon={weatherValue.conditionIcon || 'No Icon'} />-->
+			<WeatherImage
+				code={weatherValue.conditionCode}
+				isDay={weatherValue.isDay}
+			/>
 		{/if}
 	</section>
 	{#if new_request === true}
